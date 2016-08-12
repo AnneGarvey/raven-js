@@ -959,14 +959,16 @@ Raven.prototype = {
             });
         }
 
-        var $ = window.jQuery || window.$;
-        if ($ && $.fn && $.fn.ready) {
-            fill($.fn, 'ready', function (orig) {
-                return function (fn) {
-                    return orig.call(this, self.wrap(fn));
-                };
-            });
-        }
+        // this is dumb when operating a library context
+
+        // var $ = window.jQuery || window.$;
+        // if ($ && $.fn && $.fn.ready) {
+        //     fill($.fn, 'ready', function (orig) {
+        //         return function (fn) {
+        //             return orig.call(this, self.wrap(fn));
+        //         };
+        //     });
+        // }
     },
 
     _restoreBuiltIns: function () {

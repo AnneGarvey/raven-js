@@ -820,15 +820,15 @@ Raven.prototype = {
             }
         }
 
-        fill(window, 'setTimeout', wrapTimeFn);
-        fill(window, 'setInterval', wrapTimeFn);
-        if (window.requestAnimationFrame) {
-            fill(window, 'requestAnimationFrame', function (orig) {
-                return function (cb) {
-                    return orig(self.wrap(cb));
-                };
-            });
-        }
+        // fill(window, 'setTimeout', wrapTimeFn);
+        // fill(window, 'setInterval', wrapTimeFn);
+        // if (window.requestAnimationFrame) {
+        //     fill(window, 'requestAnimationFrame', function (orig) {
+        //         return function (cb) {
+        //             return orig(self.wrap(cb));
+        //         };
+        //     });
+        // }
 
         // Capture breadcrubms from any click that is unhandled / bubbled up all the way
         // to the document. Do this before we instrument addEventListener.

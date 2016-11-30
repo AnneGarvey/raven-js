@@ -874,7 +874,7 @@ Raven.prototype = {
                 }, wrappedBuiltIns);
             }
         }
-
+        /* AVOID WRAPPING TIMERS
         fill(_window, 'setTimeout', wrapTimeFn, wrappedBuiltIns);
         fill(_window, 'setInterval', wrapTimeFn, wrappedBuiltIns);
         if (_window.requestAnimationFrame) {
@@ -884,14 +884,18 @@ Raven.prototype = {
                 };
             }, wrappedBuiltIns);
         }
+        */
 
+        /* AVOID WRAPPING EVENT TARGETS
         // event targets borrowed from bugsnag-js:
         // https://github.com/bugsnag/bugsnag-js/blob/master/src/bugsnag.js#L666
         var eventTargets = ['EventTarget', 'Window', 'Node', 'ApplicationCache', 'AudioTrackList', 'ChannelMergerNode', 'CryptoOperation', 'EventSource', 'FileReader', 'HTMLUnknownElement', 'IDBDatabase', 'IDBRequest', 'IDBTransaction', 'KeyOperation', 'MediaController', 'MessagePort', 'ModalWindow', 'Notification', 'SVGElementInstance', 'Screen', 'TextTrack', 'TextTrackCue', 'TextTrackList', 'WebSocket', 'WebSocketWorker', 'Worker', 'XMLHttpRequest', 'XMLHttpRequestEventTarget', 'XMLHttpRequestUpload'];
         for (var i = 0; i < eventTargets.length; i++) {
             wrapEventTarget(eventTargets[i]);
         }
+        */
 
+        /* AVOID WRAPPING JQUERY
         var $ = _window.jQuery || _window.$;
         if ($ && $.fn && $.fn.ready) {
             fill($.fn, 'ready', function (orig) {
@@ -900,6 +904,7 @@ Raven.prototype = {
                 };
             }, wrappedBuiltIns);
         }
+        */
     },
 
 
